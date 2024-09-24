@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukurasa wa kuingia</title>
+
+    <!-- Add Bootstrap CSS CDN link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Add Font Awesome CSS CDN link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+
+    <!-- Add custom CSS for form styling -->
+    <style>
+       
+
+        .user-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-container {
+            text-align: center;
+        }
+
+        .form-title {
+          color: #007BFF;
+        }
+
+        .input-group-text {
+            background-color: lightblue;
+           color: white;
+        }
+
+        .login_btn {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .login_btn:hover {
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .links a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            color: #007BFF;
+        }
+        form{
+          position: relative;
+          top: 20px;
+          bottom: 20px;
+        }
+        #error-container {
+    opacity: 2;
+    transition: opacity 2s ease-in-out; /* Adjust the duration as needed */
+}
+
+.hide-error {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+      
+       
+    </style>
+</head>
+<body>
+<div class="container h-100" style="position: relative; top: 30px">
+  <div class="d-flex justify-content-center h-100">
+    <div class="user-card form-container">
+      <div class="d-flex justify-content-center">
+        <h3 class="form-title">Ingia</h3>
+      </div>
+      <div class="d-flex justify-content-center form-container ">
+        <form method="POST" action="">
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-user"></i></span>
+            </div>
+            <input type="text" class="form-control" name="username" placeholder="Jina la mtumiaji" required>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" placeholder="Namba siri" required>
+          </div>
+
+          <div class="d-flex justify-content-center mt-3 login-container">
+            <input type="submit" class="btn login_btn" value="Ingia">
+          </div>
+        </form>
+      </div>
+      {% for message in messages %}
+      <p id="error-container" style="margin-top: 25px; color: green; font-weight: bolder;">{{message}}</p>
+      {% endfor %}
+
+      <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+            <a href="{% url 'reg' %}" class="mt-2">Tengeneza akaunti</a>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div class="d-flex justify-content-center links">
+          <a href="{% url 'reset_password' %}" class="mt-0">Weka upya neno la siri</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+   setTimeout(function() {
+        var errorContainer = document.getElementById('error-container');
+        errorContainer.classList.add('hide-error');
+    }, 2000); // 2000 milliseconds = 2 seconds
+</script>
+</body>
+</html>

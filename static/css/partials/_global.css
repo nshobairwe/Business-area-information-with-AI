@@ -1,0 +1,79 @@
+
+/*Global classes*/
+
+.title-text{
+    font: normal  bold 50px/73px var(--roboto);
+    }
+
+.text-uppercase{
+    text-transform: uppercase;
+}
+/*Buttons*/
+.button{
+    padding: .8rem 2.2rem;
+    font: normal 500 16px/20px var(--roboto);
+    position: relative;
+    border: 3px solod transparent;
+    border-radius: 4px;
+}
+.primary-button{
+    background: var(--gradient-color);
+    background-clip: padding-box;
+    color: white;
+    box-shadow: var(--box-shadow);
+}
+ .primary-button:hover{
+    background: whitesmoke;
+    background-clip: padding-box;
+    color: black;
+}
+
+.primary-button::after, .button-secondary::after{
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    bottom: -2px;
+    right: -2px;
+    background-color: var(--gradient-color);
+    content: '';
+    z-index: -1;
+    border-radius: 4px;
+}
+.button-secondary{
+    background: white;
+    background-clip: padding-box;
+}
+.button-secondary:hover{
+    background: var(--gradient-color);
+    color: whitesmoke;
+    box-shadow: var(--box-shadow);
+}
+p.para{
+    color: var(--text-color);
+    font: normal 500 16px/25px var(--roboto);
+}
+p.b1{
+    color: var(--text-color);
+    font: italic  var(--roboto);
+   
+    
+    border: 1px solid var(--border-color);
+    text-align: center;
+    padding: 1.8rem 0rem;
+    margin: 1rem 0rem;
+    width: 180px;
+    height: 100px;
+    cursor: pointer;
+}
+p.b1:hover{
+    box-shadow: var(--box-shadow);
+    transform: scale(1.1);
+    filter: brightness(0.15);
+}
+button:focus
+button:active
+button:hover
+.btn-active{
+    outline: 0px;
+    box-shadow: none;
+}

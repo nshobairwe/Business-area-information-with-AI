@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location Posted</title>
+</head>
+<body>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        
+        <div class="form-group">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {{ form.name.errors }}
+        </div>
+    
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+            {{ form.description.errors }}
+        </div>
+    
+        <div class="form-group">
+            {{ form.image.label_tag }}
+            {{ form.image }}
+            {{ form.image.errors }}
+        </div>
+    
+        <!-- Add other fields as needed -->
+    
+        <button type="submit">Create Location</button>
+    </form>
+    <hr>
+    {% if obj %}
+    <h3>Successfully uploaded: {{ obj.name }}</h3>
+    <img src="{{ obj.image.url }}" alt="Image" class="img-thumbnail" height="70%" width="70%">
+    {% endif %}
+
+    {% for x in img %}
+    <img src="{{ x.image.url }}" alt="" class="img-thumbnail" height="70%" width="70%">
+    <h2 class="text-center">{{ x.description }}</h2>
+    <hr>
+    {% endfor %}
+    
+</body>
+</html>

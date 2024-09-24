@@ -1,0 +1,177 @@
+{% extends 'homepageAll.html' %}
+{% load static %}
+{% block extend_head %}
+<title>Welcome Hapa</title>
+{% endblock %}
+{% block content %}
+    <section id="hero" class="clearfix">
+        <div class="container" data-aos="fade-up">
+          <div class="hero-img" data-aos="zoom-out" data-aos-delay="200">
+            <img src="{% static 'img/hero-img.svg' %}" alt="" class="img-fluid">
+          </div>
+          <div class="hero-info" data-aos="zoom-in" data-aos-delay="100">
+            <h2>
+              Tunatoa habari za biashara!<br><span>za maeneo</span><br>mbalimbali</h2>
+          </div>
+        </div>
+      </section><!-- End Hero Section -->
+      <main id="main">
+        <!-- ======= About Section ======= -->
+        <section id="about">
+          <div class="container" data-aos="fade-up">
+            <header class="section-header">
+              <h3>Kuhusu</h3>
+              <p> 
+                Tunaleta taarifa kuhusu uhitaji wa biashara, hali ya hewa, na mambo mengine kwenye maeneo tofauti tofauti. 
+                Tunaunganisha wafanyabiashara na taarifa wanazohitaji za maeneo kwa urahisi na bila usumbufu. 
+                Karibu tuwasiliane na utambue eneo bora kwa biashara yako.
+              </p>
+            </header>
+            <div class="row about-container">
+              <div class="col-lg-6 content order-lg-1 order-2" >
+                <p>
+                  Vitech Company inakusaidia kutambua:
+                  </p>
+                  <p>
+                    1. <span style="color: black; font-weight: bolder;">Mahali pa Kuweka Biashara Yako:</span>
+                    Tunakupa mwongozo wa jinsi ya kuchagua eneo bora kwa biashara yako.
+                  </p>
+                  <p>
+                  2. <span style="color: black; font-weight: bolder;">Eneo Lenye Wateja:</span> Tunakupa taarifa kuhusu maeneo yenye wateja wanaohitaji bidhaa au huduma unazotoa.
+                  </p>
+                  <p>
+                  3. <span style="color: black; font-weight: bolder;">Taarifa za Maeneo na Biashara:</span> Tunatoa ufahamu wa kina kuhusu maeneo na biashara zao.
+                  </p>
+                  <p>
+                  Vitech Company inatoa suluhisho bora kwa taarifa za eneo na biashara. Karibu tuwasiliane!
+                  </p>
+              </div>
+              <div class="col-lg-6 background order-lg-2" data-aos="zoom-in">
+                <img src="{% static 'img/about-img.svg' %}" class="img-fluid" alt="">
+              </div>
+            </div> 
+            <div class="row about-extra">
+              <div class="col-lg-6" data-aos="fade-right">
+                <img src="{% static 'img/about-extra-1.svg' %}" class="img-fluid" alt="">
+              </div>
+              <div class="col-lg-6 pt-5 pt-lg-0" data-aos="fade-left">
+                <p> Ni muhimu kujua taarifa muhimu kuhusu eneo la biashara</p>
+               <p>Yafuatayo ni madhara ya kutokujua taarifa muhimu za eneo la biashara</p>
+               <p>1. <span style="color: black; font-weight: bolder;">Kupoteza Pesa:</span> Biashara inaweza kuwekezwa katika eneo ambalo halina mahitaji ya bidhaa au huduma unazotoa,
+                 na hivyo kusababisha upotevu wa pesa.</p>
+                 <p>2.<span style="color: black; font-weight: bolder;">Kushindwa Kuvutia Wateja:</span>  Kutokujua mahitaji na tabia ya wateja katika eneo husika
+                   kunaweza kusababisha biashara kushindwa kuvutia wateja na kuongeza mapato.</p>
+                   <p>
+                    3. <span style="color: black; font-weight: bolder;">Ushindani Mbadala:</span> Kutokujua kuhusu washindani wengine katika 
+                    eneo kunaweza kusababisha kukosa mkakati wa
+                     ushindani na kuathiri biashara yako.
+                   </p>
+                   <p>4. <span style="color: black; font-weight: bolder;">Kupoteza Fursa:</span> Kutokujua fursa zinazopatikana 
+                    katika eneo kunaweza kusababisha kupoteza 
+                    fursa za biashara na ukuaji.</p>
+              </div>
+            </div>
+          </div>
+        </section><!-- End About Section -->
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="section-bg">
+          <div class="container" data-aos="fade-up">
+    
+            <header class="section-header">
+              <h3>Huduma</h3>
+              <p>Karibu kwenye huduma zetu</p>
+            </header>
+            <div class="row justify-content-center">
+              <div class="col-md-6 col-lg-5" data-aos="zoom-in" data-aos-delay="100">
+                <div class="box">
+                  <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
+                  <h4 class="title"><a href="">Eneo na taarifa</a></h4>
+                  <p class="description">"Taarifa muhimu, kuhusu biashara tofauti na maeneo yake."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section><!-- End Services Section -->
+        <!-- ======= Why Us Section ======= -->
+        <section id="why-us">
+          <div class="container" data-aos="fade-up">
+            <header class="section-header">
+              <h3>"Tuchague kwa nini?"</h3>
+              <p>Sisi tutakusaidia kukupa taarifa za maeneo mbalimbali ya biashara kwa urahisi,
+                 bila kupoteza muda wa kufika katika eneo hilo. </p>
+            </header>
+          </div>
+        </section><!-- End Why Us Section -->
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="clearfix">
+          <div class="container" data-aos="fade-up">
+            <header class="section-header">
+              <h3 class="section-title">Kampuni Ya Vitech</h3>
+            </header>
+            <div class="row" data-aos="fade-up" data-aos-delay="200">
+              <div class="col-md-12 text-center">
+                <img src="{% static 'img/Buni intern training_120.jpg' %}" alt="Company Logo" class="img-fluid rounded-circle" style="width: 200px;">
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- ======= Contact Section ======= -->
+        <section id="contact">
+          <div class="container" data-aos="fade-up">
+            <div class="section-header">
+              <h3>Maoni</h3>
+            </div>
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="row">
+                  <div class="col-md-5 info">     
+                  </div>
+                  <div class="col-md-4 info">    
+                  </div>
+                  <div class="col-md-3 info">     
+                  </div>
+                </div>
+                <div class="form">
+                  <form action="{% url 'submit_comment' %}" method="post" role="form" class="php-email-form">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <div class="row">
+                      <div class="form-group col-lg-6">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Jina lako" required>
+                      </div>
+                      <div class="form-group col-lg-6 mt-3 mt-lg-0">
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Barua pepe" required>
+                      </div>
+                    </div>
+                    <div class="form-group mt-3">
+                      <input type="text" class="form-control" name="subject" id="subject" placeholder="Mada" required>
+                    </div>
+                    <div class="form-group mt-3">
+                      <textarea class="form-control" name="message" rows="5" placeholder="Ujumbe" required></textarea>
+                    </div>
+                    <div class="my-3">
+                      <div class="loading">Loading</div>
+                      <div class="error-message"></div>
+                      <div class="sent-message">Your comment has been sent. Thank you!</div>
+                    </div>
+                    <div class="text-center"><button type="submit" title="Send Message">Tuma Maoni</button></div>
+                    <div class="text-success mt-2"> 
+                      {% if messages %}
+                      <ul class="messages">
+                        {% for message in messages %}
+                          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    </div>
+                                 
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section><!-- End Contact Section -->
+      </main><!-- End #main -->>
+  {% endblock %}
+  {% block extend_footer %}
+  {% endblock %}

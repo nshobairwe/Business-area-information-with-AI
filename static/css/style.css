@@ -1,0 +1,158 @@
+/*import fonts from fonts.css file*/
+ @import url(./fonts.css);
+ /*css variables*/
+ @import url(./partials/variable.css);
+ /*import global styling*/
+ @import url(./partials/_global.css);
+ 
+ 
+ /*start navigation*/
+ .header-area .main-menu .navbar-brand{
+    padding: 0.2rem 5rem;
+    z-index: 1000;
+ }
+ .header-area .main-menu .navbar{
+    padding: 1rem 20rem ;
+ }
+ .header-area .main-menu .nav-item .nav-link{
+    font: normal 500 15px/2px var(--roboto);
+    text-transform: uppercase;
+    padding: 1.7rem;
+    color: var(--title-color);
+ }
+ .header-area .main-menu .navbar-nav .active {
+    background: var(--gradient-color);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent ;
+    background-clip: text;
+ }
+ .header-area .main-menu .navbar-nav a:hover{
+    background: var(--gradient-color);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent ;
+    background-clip: text;
+ }
+
+ /*End navigation*/
+
+ /*Banner area*/
+.site-main .site-banner .site-title h3{
+    padding-top: 35%;
+    font-weight: 500;
+}
+
+.site-main .site-banner .site-title h3::after{
+    content: ''; 
+    height: 3px;
+    width: 18vw;
+    background: black;
+    display: inline-block;
+    margin-left: 5%;
+
+}
+.site-main .site-banner .site-title h1{
+    font-size:  5rem;
+}
+.site-main.site-banner.site-title h4{
+    font-size: 1.5rem;
+}
+.site-main .site-banner .banner-image >img{
+    padding: 12rem 0;
+    width: 90rem;
+}
+/*End banner*/
+
+/*Start about area*/
+.site-main .about-area{
+    padding: 8rem 5rem; 
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.about-area .about-title h2 > span{
+    display: block;
+    font: normal bold 49px/60px var(--roboto);
+    letter-spacing: 21px;
+}
+.site-main.about-area.about-title.paragraph>p{
+    padding: .4rem 0;
+
+}
+/*Start Brand area*/
+.site-main.brand-area{
+    padding: 1rem 20rem;
+    margin-bottom: 4rem;
+}
+.site-main.site-main.brand-area.first-row.col-lg-4{
+    display: flex;
+    justify-content: center;
+
+}
+.site-main.brand-area.expirence-area{
+    padding-left: 1rem;
+}
+.site-main.brand-area.expirence-area span{
+    display: block;
+}
+.expirence-area{
+    background: url(../img/strawberry-vanilla-chocolate-ice-cream-with-waffle-cone-on-marble-stone-backgrounds.jpg) no-repeat 45px 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    height: 500px;
+    position: relative;
+}
+.flex-row{
+    padding: 90px;
+    
+}
+.flex-row span{
+    display: block;
+}
+.years-area{
+    color: blueviolet;
+    font-size: 50px;
+}
+/*End Brand area*/
+
+/* Services area*/
+.services-area{
+    padding: 7rem 2rem;
+}
+.services-title{
+    padding: 0 14rem;
+}
+.services-title h1{
+    font-size: 35px;
+}
+.services{
+    padding: 2rem 0;
+    width: 16rem;
+    margin: 5rem .5rem;
+    cursor: pointer;
+}
+
+.services:hover{
+    box-shadow: var(--box-shadow);
+}
+
+/* End services*/
+
+/*Project area*/
+.project-area{
+    padding: 4rem 0rem;
+}
+.button-group button{
+    background: transparent;
+    border: none;
+    font: normal 500 16px/130px var(--roboto);
+    text-transform: uppercase;
+}
+.button-group button + button{
+    padding-left: 3rem;
+}
+.our-project > .title h4{
+    font: normal 700 25px/12px var(--roboto);
+}
+/*End project area*/
+

@@ -1,0 +1,549 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <!-- Add Font Awesome CDN link -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<link href="{% static 'img/logo.png' %}" rel="icon">
+    <title>Karibu mteja</title>
+	<style>
+		#sidebar{
+			margin-top: 0px;
+		}
+		i{
+			padding-right: 7px;
+		}
+		  /* Inactive link color */
+		 /* Inactive link color */
+		 .nav-item a {
+            color: #333; /* Change this to your desired inactive link color */
+        }
+        /* Active link color */
+        .nav-item.active a {
+            color: #007bff; /* Change this to your desired active link color */
+        }
+		  /* Custom styling for the table */
+		  table {
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid lightblue;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: lightblue;
+        }
+		.logo{
+			margin-bottom: 30px;
+		}
+
+a{
+			font-size: 13px;
+		}
+		.description {
+    display: none; /* Initially hide the description */
+     /* Center-align the description */
+    margin-top: 3px;
+	background-color: gray;
+	color: white;
+	border-radius: 1px; 
+	margin: 0px 2px;
+	text-align: center;/* Add some space between the link and the description */
+}
+
+#maarifa-link:hover .description, #taarifa-link:hover .description {
+    display: block; /* Show the description when hovering over the link */
+}
+
+
+		 /* Responsive styles */
+		 @media (max-width: 768px) {
+            /* Adjust styles for smaller screens */
+            .col-md-3 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .col-md-9 {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            .sidebar {
+                padding-top: 20px; /* Adjust spacing */
+				z-index: 2;
+				height: 6px;
+				display: flex;
+				background-color: #333;
+            }
+
+			section{
+				z-index: 0;
+			}
+            /* Add more responsive styles as needed */
+        }
+		.invisible {
+        display: none;
+    }
+	footer{
+			font-size: 10px;
+			position: relative;
+			right: 502px;
+		}
+		
+	/* Internal CSS for small screens */
+ /* Internal CSS for small screens */
+ @media (max-width: 768px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -250px; /* Initially off-screen */
+                width: 250px;
+                height: 100%;
+                background-color: #fff; /* Sidebar background color */
+                transition: left 0.3s ease-in-out; /* Transition for sliding effect */
+            }
+
+            .sidebar.active {
+                left: 0; /* Slide in when active */
+            }
+
+            .menu-button {
+                display: block;
+                position: fixed;
+                top: 10px;
+                left: 0px;
+                z-index: 9999; /* Ensure the button appears above the sidebar */
+                /* Menu button background color */
+                color: black; /* Menu button text color */
+                border: none;
+                padding: 3px 2px;
+                cursor: pointer;
+            }
+			.menu-button:active{
+				border: none;
+			}
+			p{
+				font-size: 10px;
+			}
+			table {
+            font-size: 14px; /* Adjust the font size as needed */
+        }
+
+        /* Make the table scroll horizontally on small screens */
+        table {
+            overflow-x: auto;
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+		.menu-button:focus {
+            outline: none;
+        }
+		iframe{
+			height: 700px;
+		}
+			
+        }
+		   /* Add your custom modal styles here */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        .modal-buttons {
+            text-align: right;
+        }
+	
+	
+        /* Your existing styles */
+	</style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <nav  class="col-md-3 col-lg-2 d-md-block bg-light sidebar py-5" style="height: 700px; padding-top: 50px; ">
+                <div class="position-sticky" style="overflow: hidden;">
+                    <ul class="nav flex-column">
+                        <li>
+							<h6 class="text-info mt-3">Karibu, {{ user_name }}!</h6>
+						</li>
+						<li class="nav-item ">
+                            <a class="nav-link "  href="#" onclick="showDashboard(this) ">
+								<i class="fas fa-map-marker-alt"></i>
+								Maeneo yaliyopo
+								
+                            </a>
+                        </li>
+						<li class="nav-item">
+							<a id="maarifa-link" class="nav-link active" href="#" onclick="showLocationPosted1(this)">
+								<i class="fas fa-info-circle"></i>
+								Maarifa ya biashara
+								<p  class="mb-0 description">Ya bure</p>
+							</a>
+
+                        </li>
+                       
+						
+						<li class="nav-item">
+                            <a id="taarifa-link" class="nav-link " href="#" onclick="showLocationPosted(this)">
+								<i class="fas fa-map-marker-alt"></i>
+								Taarifa za maeneo
+								<p class="mb-0 description" >Ya kulipia</p>
+							</a>
+
+
+                        </li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'logout' %}" >
+								<i class="fas fa-sign-out-alt "></i>kuondoka
+							</a>
+						</li>
+                    </ul>
+                </div>
+		
+            </nav>
+			 <!-- Custom Modal -->
+    <div id="customModal" class="modal">
+        <div class="modal-content">
+            <p>Huduma hii itahitaji malipo baadae.</p>
+            <div class="modal-buttons">
+                <button id="endeleaButton">Endelea</button>
+                <button id="katishaButton">Katisha</button>
+            </div>
+        </div>
+    </div>
+			 <!-- Menu Button for Small Screens -->
+			 <button class="menu-button navbar-toggler d-md-none" type="button" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+			
+            <!-- Main content -->
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" >
+                <!-- request data section -->
+
+				<!--Free request-->
+				<section style="margin-bottom: 20px; " >
+					<div id="locationPostedSection1" class="invisible">
+					
+						<iframe src="https://widget.getcody.ai/9a347f80-6c9f-449a-a927-ae84e59fbf5a" style="border:0px;position: relative ;right:3px; width: 100%;" name="codyai" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" height="600px" width="50%" ></iframe>
+						<div class="container"> </div>
+						<footer class="text-white pt-0" >
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+			</div>
+			<div class="col-md-6 text-info text-center mt-0"> <!-- Added "text-center" class -->
+				&copy; 2023 kampuni ya Vitech. Haki Zote Zimehifadhiwa
+			</div>
+		</div>
+	</div>
+	</footer>
+	
+					</div>
+			</section>
+
+			<!--money request-->
+				<section style="margin-bottom: 20px ;">
+					<div id="locationPostedSection" class="invisible">
+					
+                    	<iframe src="https://widget.getcody.ai/public/9a2bce19-3d53-4568-b38f-8a09c4db723b" style="border:0px;position: relative ;right:3px; top: 0px; width: 100%;" name="codyai" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" height="600px" width="50%" ></iframe>
+						<div class="container"> </div>
+						<footer class="text-white pt-0" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6 text-info text-center mt-0"> <!-- Added "text-center" class -->
+                &copy; 2023 kampuni ya Vitech. Haki Zote Zimehifadhiwa
+            </div>
+        </div>
+    </div>
+</footer>
+
+					</div>
+			</section>
+
+		<!--Dashboard section-->
+			<section>
+				
+				
+				<div id="dashboardSection">
+					<!--
+					<h5 class=" text-center text-info mt-0 text-uppercase">
+						
+				<p>Maeneo Ambayo unaweza kupata</p>
+						<p>Taarifa zake Kwa Ai</p> </h5>
+					<div class="container mt-0">
+						
+						<table class="table table-bordered text-center">
+							<thead>
+								<tr class="bg-primary text-white">
+									<th>Mkoa</th>
+									<th>Wilaya</th>
+									<th>Jamii</th>
+									<th>Mtaa</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Dar es salaam</td>
+									<td>Ilala</td>
+									<td>Kimanga</td>
+									<td>Twiga  <a href="https://www.google.com/maps/search/Mtaa wa Twiga" target="_blank" class="mx-3">Angalia ramani
+									</a></td>
+								</tr>
+
+								<tr>
+									<td>Dar es salaam</td>
+									<td>Ilala</td>
+									<td>Darajani</td>
+									<td>Mjimpya <a href="https://www.google.com/maps/search/Mtaa wa Mjimpya Tabata" target="_blank" class="mx-3">Angalia ramani
+									</a></td>
+								</tr>
+								<tr>
+									<td>Dar es salaam</td>
+									<td>Kinondoni</td>
+									<td>Kijitonyama</td>
+									<td>Bwawani 
+										<a href="https://www.google.com/maps/search/Mtaa wa Bwawani Kijitonyama" target="_blank" class="mx-3">Angalia ramani
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>Dar es laam</td>
+									<td>Kinondoni</td>
+									<td>Kijitonyama</td>
+									<td>Alimaua B
+										<a href="https://www.google.com/maps/search/Mtaa wa Alimaua B Kijitonyama" target="_blank" class="mx-3">Angalia ramani
+										</a>
+									</td>
+								</tr>
+									<tr>
+									<td>Dar es salaam</td>
+									<td>Ubungo</td>
+									<td>Saranga</td>
+									<td>Saranga 
+										<a href="https://www.google.com/maps/search/Mtaa wa Saranga" target="_blank" class="mx-3">Angalia ramani
+										</a>
+									</td>
+								</tr>
+									<tr>
+									<td>Dar es salaam</td>
+									<td>Ubungo</td>
+									<td>Saranga</td>
+									<td>Ukombozi 
+										<a href="https://www.google.com/maps/search/Mtaa wa Ukombozi" target="_blank" class="mx-3">Angalia ramani
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>Dar es salaam</td>
+									<td>Ubungo</td>
+									<td>Mabibo</td>
+									<td>Mwananchi 
+										<a href="https://www.google.com/maps/search/Mtaa wa Mwananchi Ubungo" target="_blank" class="mx-3">Angalia ramani
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<td>Dar es salaam</td>
+									<td>Ubungo</td>
+									<td>Saranga</td>
+									<td>Arsenal
+										 <a href="https://www.google.com/maps/search/Mtaa wa Arsenal Ubungo" target="_blank" class="mx-3">Angalia ramani
+									</a></td>
+								</tr
+							
+							</tbody>
+						</table>
+					</div>
+				-->
+				<div class="container mt-4">
+					<h5 class="text-center text-info mt-0 text-uppercase">
+						<p>Maeneo Ambayo unaweza kupata Taarifa zake Kwa Ai</p>
+					</h5>
+					<div class="input-group mb-3">
+						<input type="text" id="search" class="form-control" placeholder="Tafuta Mkoa, Wilaya, Jamii, or Mtaa">
+						<div class="input-group-append">
+							<button class="btn btn-primary" id="search-button" type="button">Tafuta</button>
+						</div>
+					</div>
+					<table class="table table-bordered table-striped text-center">
+						<thead class="bg-primary text-white">
+							<tr>
+								<th>Mkoa</th>
+								<th>Wilaya</th>
+								<th>Jamii</th>
+								<th>Mtaa</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for location in locations %}
+								<tr>
+									<td>{{ location.Mkoa }}</td>
+									<td>{{ location.Wilaya }}</td>
+									<td>{{ location.Jamii }}</td>
+									<td>{{ location.Mtaa }}</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				
+				<div class="pagination justify-content-center mt-4">
+					<span class="step-links">
+						{% if locations.has_previous %}
+							<a href="?page={{ locations.previous_page_number }}" class="btn btn-primary">Nyuma</a>
+						{% endif %}
+						<span class="current-page">{{ locations.number }} / {{ locations.paginator.num_pages }}</span>
+						{% if locations.has_next %}
+							<a href="?page={{ locations.next_page_number }}" class="btn btn-primary">Mbele</a>
+						{% endif %}
+					</span>
+				</div>
+				
+				
+				</div>
+		</section>
+
+            </main>
+        </div>
+    </div>
+  <script>
+
+	// JavaScript to set "Maarifa ya biashara" as the default active page
+document.addEventListener("DOMContentLoaded", function () {
+    //const maarifaLink = document.getElementById("maarifa-link");
+   // showLocationPosted1(maarifaLink); // Show "Maarifa ya Biashara" by default
+   
+
+    // JavaScript to show the custom modal when the link is clicked
+    document.getElementById("taarifa-link").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent the link from navigating
+        var modal = document.getElementById("customModal");
+        modal.style.display = "block";
+
+       // Handle button clicks
+	   document.getElementById("endeleaButton").addEventListener("click", function () {
+            // User clicked "Endelea"
+            // You can add your actions here
+            modal.style.display = "none"; // Close the modal
+        });
+
+        document.getElementById("katishaButton").addEventListener("click", function () {
+            // User clicked "Katisha"
+            modal.style.display = "none"; // Close the modal
+			showDashboard(this)
+        });
+    });
+
+
+    // Event listener for "Maarifa ya biashara" link
+    maarifaLink.addEventListener("click", function () {
+        // Set "Maarifa ya biashara" as active
+        showLocationPosted1(maarifaLink);
+    });
+
+    // Event listener for "Next" button in pagination
+    const nextPageButton = document.querySelector('.pagination .btn-primary:last-child');
+    nextPageButton.addEventListener('click', function () {
+        const currentPage = parseInt(document.querySelector('.current-page').textContent.split('/')[0].trim());
+        showLocationPosted(this, currentPage + 1); // Load the next page
+    });
+});
+
+
+        function showDashboard(link) {
+            setActive(link);
+            document.getElementById('dashboardSection').classList.remove('invisible');
+            document.getElementById('locationPostedSection').classList.add('invisible');
+            document.getElementById('locationPostedSection1').classList.add('invisible');
+        }
+
+        function showLocationPosted1(link) {
+            setActive(link);
+            document.getElementById('dashboardSection').classList.add('invisible');
+            document.getElementById('locationPostedSection').classList.add('invisible');
+            document.getElementById('locationPostedSection1').classList.remove('invisible');
+        }
+
+        function showLocationPosted(link) {
+            setActive(link);
+            document.getElementById('dashboardSection').classList.add('invisible');
+            document.getElementById('locationPostedSection1').classList.add('invisible');
+            document.getElementById('locationPostedSection').classList.remove('invisible');
+        }
+
+        function setActive(activeLink) {
+            // Remove 'active' class from all links
+            const navLinks = document.querySelectorAll('.nav-item a');
+            navLinks.forEach(link => {
+                link.parentElement.classList.remove('active');
+            });
+            // Add 'active' class to the clicked link's parent element (li)
+            activeLink.parentElement.classList.add('active');
+        }
+
+        // JavaScript function to toggle the sidebar visibility
+        function toggleSidebar() {
+            var sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        // Close the sidebar when a link is clicked
+        const navLinks = document.querySelectorAll('.nav-item a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                var sidebar = document.querySelector('.sidebar');
+                sidebar.classList.remove('active');
+            });
+        });
+
+		// JavaScript function to handle the search
+function handleSearch() {
+    const searchTerm = document.getElementById("search").value.toLowerCase(); // Get the search term
+    const tableRows = document.querySelectorAll("tbody tr"); // Get all table rows
+
+    tableRows.forEach((row) => {
+        const rowData = row.textContent.toLowerCase(); // Get text content of the row
+
+        if (rowData.includes(searchTerm)) {
+            // If the row contains the search term, display it
+            row.style.display = "table-row";
+        } else {
+            // Otherwise, hide it
+            row.style.display = "none";
+        }
+    });
+}
+
+// Event listener for the search button
+document.getElementById("search-button").addEventListener("click", function () {
+    handleSearch();
+});
+
+// Event listener for the Enter key in the search input
+document.getElementById("search").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        handleSearch();
+    }
+});
+
+    </script>
+</body>
+</html>

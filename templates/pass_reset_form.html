@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingiza Neno Siri Mpya</title>
+    <!-- Add Bootstrap CSS link here -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background color */
+        }
+        .password-form-container {
+            background-color: #ffffff; /* White background color */
+            border: 1px solid #dee2e6; /* Light gray border */
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 password-form-container">
+                <h3>Ingiza Neno Siri Mpya</h3>
+                <p>Umekiandika kwa usahihi. Tafadhali hakikisha umeingiza neno siri mpya mara mbili ili tuweze kuhakiki.</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    {{form}}
+                    <input type="submit" name="update Password" class="btn btn-info">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
